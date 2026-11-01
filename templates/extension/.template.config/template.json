@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "YKSPlayer",
+  "classifications": ["YKSPlayer", "Plugin", "Extension"],
+  "identity": "YKSPlayer.Templates.Extension",
+  "name": "YKSPlayer extension (C#)",
+  "shortName": "yks-extension",
+  "sourceName": "MyExtension",
+  "preferNameDirectory": true,
+  "tags": { "language": "C#", "type": "project" },
+  "symbols": {
+    "publisher": { "type": "parameter", "datatype": "text", "defaultValue": "me", "replaces": "PUBLISHER_ID" }
+  }
+}

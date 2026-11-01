@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "id": "PUBLISHER_ID.myextension",
+  "name": "MyExtension",
+  "version": "0.1.0",
+  "publisher": "PUBLISHER_ID",
+  "description": "",
+  "license": "MIT",
+  "kind": "extension",
+  "entry": "MyExtension.dll",
+  "extension": { "runtime": "dotnet" },
+  "engines": { "yksplayer": ">=2.0.0 <3.0.0" },
+  "permissions": ["playback.read", "ui.panel"],
+  "categories": ["extension"]
+}

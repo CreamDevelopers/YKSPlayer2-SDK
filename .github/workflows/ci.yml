@@ -1,0 +1,80 @@
+# CI for the YKSPlayer SDK repository (this folder is published on its own).
+name: ci
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: .NET SDK and tests
+        run: dotnet test dotnet/YKSPlayer.Sdk.Tests -c Release
+
+      - name: Native samples
+        run: |
+          cmake -S samples/native -B build/samples -A x64
+          cmake --build build/samples --config Release
+
+      - name: Native templates
+        shell: pwsh
+        run: |
+          foreach ($t in 'native-effect', 'native-decoder') {
+            cmake -S templates/$t -B build/$t -A x64
+            if ($LASTEXITCODE) { exit 1 }
+            cmake --build build/$t --config Release
+            if ($LASTEXITCODE) { exit 1 }
+          }
+
+      - name: Extension sample
+        run: dotnet build samples/extension-diary -c Release
+
+      - name: Visualizer shader
+        shell: pwsh
+        run: ./samples/visualizer-nebula/build.ps1 -Out build/nebula.cso
+
+      - name: Validate manifests
+        shell: pwsh
+        run: |
+          $pack = 'dotnet run --project tools/yks-pack -c Release --'
+          $dirs = 'build/samples/plugins/sine-decoder', 'build/samples/plugins/bitcrusher',
+                  'samples/extension-diary/bin/Release/net10.0'
+          foreach ($d in $dirs) {
+            Invoke-Expression "$pack validate $d"
+            if ($LASTEXITCODE) { exit 1 }
+          }
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Pack NuGet and yks-pack
+        run: |
+          dotnet pack dotnet/YKSPlayer.Sdk -c Release -o artifacts
+          dotnet publish tools/yks-pack -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -o artifacts/yks-pack
+      - name: Attach to the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          Compress-Archive artifacts/yks-pack/* artifacts/yks-pack-win-x64.zip
+          gh release create ${{ github.ref_name }} artifacts/*.nupkg artifacts/yks-pack-win-x64.zip --generate-notes
+        shell: pwsh

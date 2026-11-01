@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>YKSPlayer.Sdk</RootNamespace>
+    <PackageId>YKSPlayer.Sdk</PackageId>
+    <Version>1.2.0</Version>
+    <Authors>YKSPlayer</Authors>
+    <Description>Build YKSPlayer 2 plugins: manifest model and validation, .ykspkg packaging and signing, and the extension (JSON-RPC) API.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>yksplayer;music;plugin;sdk</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+</Project>

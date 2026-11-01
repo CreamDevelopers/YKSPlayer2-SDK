@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "id": "sample.listening-diary",
+  "name": "Listening Diary (sample)",
+  "version": "1.0.0",
+  "publisher": "YKSPlayer SDK",
+  "description": "今日聴いた曲を日記のように残すパネル。拡張機能のサンプル。",
+  "license": "MIT",
+  "repository": "https://github.com/CreamDevelopers/YKSPlayer2-SDK",
+  "kind": "extension",
+  "entry": "ListeningDiary.dll",
+  "extension": { "runtime": "dotnet" },
+  "engines": { "yksplayer": ">=2.0.0 <3.0.0" },
+  "permissions": ["playback.read", "ui.panel", "ui.command"],
+  "categories": ["extension", "sample"]
+}

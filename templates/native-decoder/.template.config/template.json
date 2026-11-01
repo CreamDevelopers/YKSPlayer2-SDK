@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "YKSPlayer",
+  "classifications": ["YKSPlayer", "Plugin", "Audio"],
+  "identity": "YKSPlayer.Templates.NativeDecoder",
+  "name": "YKSPlayer decoder plugin (C)",
+  "shortName": "yks-decoder",
+  "sourceName": "MyDecoder",
+  "preferNameDirectory": true,
+  "tags": { "language": "C", "type": "project" },
+  "symbols": {
+    "publisher": { "type": "parameter", "datatype": "text", "defaultValue": "me", "replaces": "PUBLISHER_ID" },
+    "extension": { "type": "parameter", "datatype": "text", "defaultValue": ".myfmt", "replaces": ".myfmt" }
+  }
+}

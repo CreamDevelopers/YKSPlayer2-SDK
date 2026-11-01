@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "id": "PUBLISHER_ID.mydecoder",
+  "name": "MyDecoder",
+  "version": "0.1.0",
+  "publisher": "PUBLISHER_ID",
+  "description": "",
+  "license": "MIT",
+  "kind": "decoder",
+  "entry": "MyDecoder.dll",
+  "engines": { "yksplayer": ">=2.0.0 <3.0.0", "pluginAbi": 1 },
+  "permissions": ["audio.decode"],
+  "decoder": { "extensions": [".myfmt"] },
+  "categories": ["decoder"]
+}

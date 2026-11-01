@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "id": "sample.tone",
+  "name": "YKS Tone (sample)",
+  "version": "1.0.0",
+  "publisher": "YKSPlayer SDK",
+  "description": "Plays .ykstone melody files. A minimal decoder plugin to copy from.",
+  "license": "MIT",
+  "repository": "https://github.com/CreamDevelopers/YKSPlayer2-SDK",
+  "kind": "decoder",
+  "entry": "sine-decoder.dll",
+  "engines": { "yksplayer": ">=2.0.0 <3.0.0", "pluginAbi": 1 },
+  "permissions": ["audio.decode"],
+  "decoder": { "extensions": [".ykstone"] },
+  "categories": ["decoder", "sample"]
+}

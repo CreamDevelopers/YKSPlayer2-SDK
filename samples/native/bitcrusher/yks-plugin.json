@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "id": "sample.bitcrusher",
+  "name": "Bit Crusher (sample)",
+  "version": "1.0.0",
+  "publisher": "YKSPlayer SDK",
+  "description": "Lo-fi bit depth and sample rate reduction. A minimal effect plugin to copy from.",
+  "license": "MIT",
+  "repository": "https://github.com/CreamDevelopers/YKSPlayer2-SDK",
+  "kind": "dsp",
+  "entry": "bitcrusher.dll",
+  "engines": { "yksplayer": ">=2.0.0 <3.0.0", "pluginAbi": 1 },
+  "permissions": ["audio.process"],
+  "categories": ["effect", "sample"]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "YKSPlayer",
+  "classifications": ["YKSPlayer", "Plugin", "Audio"],
+  "identity": "YKSPlayer.Templates.NativeEffect",
+  "name": "YKSPlayer effect plugin (C++)",
+  "shortName": "yks-effect",
+  "sourceName": "MyEffect",
+  "preferNameDirectory": true,
+  "tags": { "language": "C++", "type": "project" },
+  "symbols": {
+    "publisher": { "type": "parameter", "datatype": "text", "defaultValue": "me", "replaces": "PUBLISHER_ID" }
+  }
+}
